@@ -1,4 +1,4 @@
 # ui-take-home
 
-## Reqcuirement
+## Requirement
 * use react, redux, material ui
