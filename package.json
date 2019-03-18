@@ -1,8 +1,44 @@
 {
   "name": "ui-take-home",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "src/index.js",
   "repository": "git@github.com:kazu9su/ui-take-home.git",
   "author": "Tommy <kazu9su@gmail.com",
-  "license": "MIT"
+  "license": "MIT",
+  "scripts": {
+    "test": "npm run test:script",
+    "test:script": "env NODE_PATH=src/ mocha --opts test/mocha.opts \"src/*/*.spec.js*\"",
+    "webpack": "webpack",
+    "webpack:watch": "webpack --watch"
+  },
+  "dependencies": {
+    "babel-loader": "^8.0.5",
+    "material-ui": "^0.20.2",
+    "react": "^16.8.4",
+    "react-dom": "^16.8.4",
+    "react-redux": "^6.0.1",
+    "redux": "^4.0.1",
+    "redux-form": "^8.1.0",
+    "redux-thunk": "^2.3.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.3.4",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-power-assert": "2.0.0",
+    "babel-preset-react": "^6.24.1",
+    "babel-preset-stage-0": "^6.24.1",
+    "babel-register": "^6.26.0",
+    "coffeescript": "^2.3.2",
+    "fetch-mock": "^7.3.1",
+    "ignore-styles": "^5.0.1",
+    "jsdom": "^14.0.0",
+    "jsdom-global": "^3.0.2",
+    "mocha": "^6.0.2",
+    "power-assert": "^1.6.1",
+    "redux-logger": "^3.0.6",
+    "redux-mock-store": "^1.5.3",
+    "sinon": "^7.2.7",
+    "webpack": "^4.29.6",
+    "webpack-cli": "^3.3.0"
+  }
 }
