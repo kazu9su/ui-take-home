@@ -1,0 +1,8 @@
+{
+  "name": "ui-take-home",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:kazu9su/ui-take-home.git",
+  "author": "Tommy <kazu9su@gmail.com",
+  "license": "MIT"
+}
