@@ -24,7 +24,7 @@ describe('agents', () => {
         category: 'Medicare',
         location: 'NY',
         plate: 1,
-        action: [
+        actions: [
           'listen'
         ],
       }
