@@ -7,7 +7,6 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 
 class App extends Component {
   static propTypes = {
-    agents: PropTypes.object.isRequired,
     dispatch: PropTypes.func.isRequired,
   }
 
@@ -18,15 +17,18 @@ class App extends Component {
 
   render() {
     const { agents } = this.props
+    const isEmpty = agents === undefined
     return (
       <MuiThemeProvider>
-        <div style={{ paddingTop: 64 }}>
-          <div>
-            <Agents
-              agents={agents}
-            />
+        {agents == undefined ? <h2>Empty.</h2>
+        : <div style={{ paddingTop: 64 }}>
+            <div>
+              <Agents
+                agents={agents}
+              />
+            </div>
           </div>
-        </div>
+        }
       </MuiThemeProvider>
     )
   }
@@ -35,7 +37,7 @@ class App extends Component {
 const mapStateToProps = (state) => {
   const {
     items: agents,
-  } = state.agents == {} ? state.agents : {
+  } = state.agents || {
     items: {},
   }
 

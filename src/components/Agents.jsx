@@ -16,7 +16,7 @@ const Agents = ({ agents }) => (
       </TableRow>
     </TableHeader>
     <TableBody displayRowCheckbox={false}>
-      { Object.keys(agents).forEach(id =>
+      { Object.keys(agents).map(id =>
         <TableRow key={id}>
           <TableRowColumn>
             {agents[id].status}
@@ -38,7 +38,7 @@ const Agents = ({ agents }) => (
           </TableRowColumn>
           <TableRowColumn>
             {agents[id].actions.map((action, i) =>
-              {action}
+              action
             )}
           </TableRowColumn>
         </TableRow>,
