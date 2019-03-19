@@ -2,6 +2,7 @@ import React from 'react'
 import Moment from 'react-moment'
 import PropTypes from 'prop-types'
 import { Table, TableHeader, TableHeaderColumn, TableBody, TableRow, TableRowColumn } from 'material-ui/Table'
+import AgentStatusMap from './AgentStatusMap'
 
 const Agents = ({ agents }) => (
   <Table>
@@ -19,8 +20,8 @@ const Agents = ({ agents }) => (
     <TableBody displayRowCheckbox={false}>
       { Object.keys(agents).map(id =>
         <TableRow key={id}>
-          <TableRowColumn>
-            {agents[id].status}
+          <TableRowColumn style={AgentStatusMap[agents[id].status].style}>
+            {AgentStatusMap[agents[id].status].label}
           </TableRowColumn>
           <TableRowColumn>
             <Moment interval={1000} date={agents[id].status_updated_at} durationFromNow>
