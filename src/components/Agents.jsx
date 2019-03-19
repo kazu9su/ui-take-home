@@ -27,10 +27,10 @@ const Agents = ({ agents }) => (
             </Moment>
           </TableRowColumn>
           <TableRowColumn>
-            {agents[id].tier}
+            {agents[id].name}
           </TableRowColumn>
           <TableRowColumn>
-            {agents[id].name}
+            {agents[id].tier}
           </TableRowColumn>
           <TableRowColumn>
             {agents[id].plate}
