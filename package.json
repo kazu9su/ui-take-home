@@ -12,7 +12,6 @@
     "webpack:watch": "webpack --watch"
   },
   "dependencies": {
-    "jsonfile": "^5.0.0",
     "material-ui": "^0.20.2",
     "prop-types": "^15.7.2",
     "react": "^16.8.4",

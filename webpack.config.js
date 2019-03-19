@@ -33,6 +33,5 @@ module.exports = {
     {
       window: 'window',
     },
-  ],
-  target: 'node'
+  ]
 };
