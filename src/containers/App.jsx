@@ -21,7 +21,7 @@ class App extends Component {
     return (
       <MuiThemeProvider>
         {agents == undefined ? <h2>Empty.</h2>
-        : <div style={{ paddingTop: 64 }}>
+        : <div>
             <div>
               <Agents
                 agents={agents}
