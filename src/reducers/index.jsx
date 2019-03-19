@@ -4,7 +4,10 @@ import { REQUEST_AGENTS, RECEIVE_AGENTS } from '../actions'
 export const agents = (state = {}, action) => {
   switch (action.type) {
     case REQUEST_AGENTS:
-      return state
+      return {
+        ...state,
+        items: {},
+      }
     case RECEIVE_AGENTS:
       return {
         ...state,

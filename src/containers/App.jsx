@@ -1,9 +1,13 @@
-import React, { Component, PropTypes } from 'react'
+import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
+import { fetchAgents } from '../actions'
+import Agents from '../components/Agents'
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 
 class App extends Component {
   static propTypes = {
-    actions: PropTypes.array.isRequired,
+    agents: PropTypes.object.isRequired,
     dispatch: PropTypes.func.isRequired,
   }
 
@@ -17,13 +21,11 @@ class App extends Component {
     return (
       <MuiThemeProvider>
         <div style={{ paddingTop: 64 }}>
-          <MainAppBar />
-              <div>
-                <Agents
-                  agents={agents}
-                />
-              </div>
-          }
+          <div>
+            <Agents
+              agents={agents}
+            />
+          </div>
         </div>
       </MuiThemeProvider>
     )
@@ -33,8 +35,8 @@ class App extends Component {
 const mapStateToProps = (state) => {
   const {
     items: agents,
-  } = state.agents || {
-    items: [],
+  } = state.agents == {} ? state.agents : {
+    items: {},
   }
 
   return {

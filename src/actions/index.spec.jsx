@@ -50,7 +50,7 @@ describe('receiveAgents', () => {
 describe('fetchAgents', () => {
   it('should set agents', (done) => {
     const store = mockStore({
-      agents: [],
+      agents: {},
     })
 
     store.dispatch(fetchAgents())

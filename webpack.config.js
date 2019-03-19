@@ -34,4 +34,7 @@ module.exports = {
       window: 'window',
     },
   ],
+  node: {
+    fs: 'empty'
+  }
 };

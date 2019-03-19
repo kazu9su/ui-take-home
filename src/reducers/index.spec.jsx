@@ -11,7 +11,9 @@ describe('agents', () => {
       type: 'REQUEST_AGENTS',
     }
 
-    assert.deepStrictEqual(agents(undefined, action), {})
+    assert.deepStrictEqual(agents(undefined, action), {
+      items: {},
+    })
   })
 
   it('should handle RECEIVE_AGENTS action', () => {
