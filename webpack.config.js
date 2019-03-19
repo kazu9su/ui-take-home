@@ -16,7 +16,7 @@ module.exports = {
         ],
         loader: 'babel-loader',
         options: {
-          presets: ['es2015', 'react', 'stage-0'],
+          presets: ['@babel/preset-env', '@babel/preset-react'],
         },
       },
     ],
@@ -34,7 +34,5 @@ module.exports = {
       window: 'window',
     },
   ],
-  node: {
-    fs: 'empty'
-  }
+  target: 'node'
 };
