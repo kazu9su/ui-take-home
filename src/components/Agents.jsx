@@ -1,4 +1,5 @@
 import React from 'react'
+import Moment from 'react-moment'
 import PropTypes from 'prop-types'
 import { Table, TableHeader, TableHeaderColumn, TableBody, TableRow, TableRowColumn } from 'material-ui/Table'
 
@@ -22,7 +23,8 @@ const Agents = ({ agents }) => (
             {agents[id].status}
           </TableRowColumn>
           <TableRowColumn>
-            {agents[id].status_updated_at}
+            <Moment interval={1000} date={agents[id].status_updated_at} durationFromNow>
+            </Moment>
           </TableRowColumn>
           <TableRowColumn>
             {agents[id].tier}

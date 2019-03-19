@@ -26,6 +26,6 @@ describe('Agents', () => {
   it('return <ul>', () => {
     const wrapper = shallow(<Agents agents={agents} />)
     assert.equal(wrapper.find('Table').length, 1)
-    assert.equal(wrapper.find('TableRow').length, 1)
+    assert.equal(wrapper.find('TableRow').length, 2)
   })
 })

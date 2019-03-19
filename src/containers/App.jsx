@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import { fetchAgents } from '../actions'
+import { fetchAgents, elapsedTime } from '../actions'
 import Agents from '../components/Agents'
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 
