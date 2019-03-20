@@ -12,6 +12,7 @@
     "webpack:watch": "webpack --watch"
   },
   "dependencies": {
+    "@material-ui/core": "^3.9.2",
     "material-ui": "^0.20.2",
     "moment": "^2.24.0",
     "prop-types": "^15.7.2",
