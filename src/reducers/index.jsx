@@ -22,10 +22,13 @@ export const agents = (state = {}, action) => {
   }
 }
 
-export const sortAgents = (state = { orderBy: 'status' }, action) => {
+export const sortAgents = (state = { order: 'asc', orderBy: 'status' }, action) => {
   switch (action.type) {
     case SORT_AGENTS:
-      return action.sortAgents
+      return {
+        order: action.order,
+        orderBy: action.orderBy,
+      }
     default:
       return state
   }

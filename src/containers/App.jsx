@@ -7,16 +7,17 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 
 class App extends Component {
   static propTypes = {
-    dispatch: PropTypes.func.isRequired,
+    onLoad: PropTypes.func.isRequired,
+    onSortRequested: PropTypes.func.isRequired,
   }
 
   componentDidMount() {
-    const { dispatch } = this.props
-    dispatch(fetchAgents())
+    const { onLoad } = this.props
+    onLoad()
   }
 
   render() {
-    const { agents } = this.props
+    const { agents, order, orderBy, onSortRequested } = this.props
     const isEmpty = agents === undefined
     return (
       <MuiThemeProvider>
@@ -25,7 +26,9 @@ class App extends Component {
             <div>
               <Agents
                 agents={agents}
-                sortAgents={sortAgents}
+                sortAgents={onSortRequested}
+                order={order}
+                orderBy={orderBy}
               />
             </div>
           </div>
@@ -43,12 +46,17 @@ const mapStateToProps = (state) => {
   }
 
   return {
-    agents,
+    agents: agents,
+    order: state.sortAgents.order,
+    orderBy: state.sortAgents.orderBy,
   }
 }
 
 const mapDispatchToProps = (dispatch) => ({
-  sortAgents: orderBy => dispatch(sortAgents(orderBy)),
+  onLoad: () => dispatch(fetchAgents()),
+  onSortRequested: (order, orderBy) => {
+    dispatch(sortAgents(order, orderBy))
+  },
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(App)

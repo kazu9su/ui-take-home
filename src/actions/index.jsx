@@ -11,15 +11,18 @@ export const receiveAgents = json => ({
   agents: json,
 })
 
-export const sortAgents = orderBy => ({
-  type: SORT_AGENTS,
-  orderBy,
-})
+export const sortAgents = (order, orderBy) => {
+  return {
+    type: SORT_AGENTS,
+    order,
+    orderBy,
+  }
+}
 
 export const fetchAgents = () => (dispatch) => {
   const json = require('../resources/agents.json')
   const promise = new Promise((resolve) => {
-    resolve(dispatch(receiveAgents(json)))
+    resolve(dispatch(receiveAgents(json['agents'])))
   })
   return promise
 }

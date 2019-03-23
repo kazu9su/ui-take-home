@@ -25,16 +25,45 @@ const icons = (action, i) => {
   }
 }
 
-const Agents = ({ agents, sortAgents }) => (
+const desc = (a, b, orderBy) => {
+    console.log(a, b)
+  if (b[orderBy] < a[orderBy]) {
+    return -1;
+  }
+  if (b[orderBy] > a[orderBy]) {
+    return 1;
+  }
+  return 0;
+}
+
+const stableSort = (array, cmp) => {
+  const stabilizedThis = array.map((el, index) => [el, index]);
+  stabilizedThis.sort((a, b) => {
+    const order = cmp(a[0], b[0]);
+    if (order !== 0) return order;
+    return a[1] - b[1];
+  });
+  return stabilizedThis.map(el => el[0]);
+}
+
+const getSorting = (order, orderBy) => {
+  return order === 'desc' ? (a, b) => desc(a, b, orderBy) : (a, b) => -desc(a, b, orderBy);
+}
+
+const Agents = ({ agents, order, orderBy, sortAgents }) => (
   <Table>
     <TableHead>
       <TableRow>
       {headerRows.map(
         row => (
           <TableCell
-            key={row.id}>
+            key={row.id}
+            sortDirection={orderBy === row.id ? order : false}
+          >
             <TableSortLabel
-              onClick={() => sortAgents(row.id) }
+              onClick={() => sortAgents(orderBy === row.id && order === 'desc' ? 'asc' : 'desc', row.id) }
+              active={orderBy === row.id}
+              direction={order}
             >
               {row.label}
             </TableSortLabel>
@@ -44,32 +73,32 @@ const Agents = ({ agents, sortAgents }) => (
       </TableRow>
     </TableHead>
     <TableBody displayRowCheckbox={false}>
-      { Object.keys(agents).map(id =>
-        <TableRow key={id}>
-          <TableCell style={agentStatusMap[agents[id].status].style}>
-            {agentStatusMap[agents[id].status].label}
+      { stableSort(agents, getSorting(order, orderBy)).map(agent =>
+        <TableRow key={agent.id}>
+          <TableCell style={agentStatusMap[agent.status].style}>
+            {agentStatusMap[agent.status].label}
           </TableCell>
           <TableCell>
-            <Moment interval={1000} date={agents[id].status_updated_at} durationFromNow>
+            <Moment interval={1000} date={agent.status_updated_at} durationFromNow>
             </Moment>
           </TableCell>
           <TableCell>
-            {agents[id].name}
+            {agent.name}
           </TableCell>
           <TableCell>
-            {agents[id].tier}
+            {agent.tier}
           </TableCell>
           <TableCell>
-            {agents[id].status == 0 &&
-                <div>{agents[id].category} | {agents[id].location} <LinearProgress variant="determinate" value={progress(agents[id].plate, agents[id].plates)} /></div>
+            {agent.status == 0 &&
+                <div>{agent.category} | {agent.location} <LinearProgress variant="determinate" value={progress(agent.plate, agent.plates)} /></div>
             }
           </TableCell>
           <TableCell>
-            {agents[id].plate + 1}
+            {agent.plate + 1}
           </TableCell>
           <TableCell>
             <div>
-            {agents[id].actions.map((action, i) =>
+            {agent.actions.map((action, i) =>
               icons(action, i)
             )}
             </div>
