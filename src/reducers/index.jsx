@@ -1,5 +1,9 @@
 import { combineReducers } from 'redux'
-import { REQUEST_AGENTS, RECEIVE_AGENTS } from '../actions'
+import {
+  REQUEST_AGENTS,
+  RECEIVE_AGENTS,
+  SORT_AGENTS,
+} from '../actions'
 
 export const agents = (state = {}, action) => {
   switch (action.type) {
@@ -18,8 +22,18 @@ export const agents = (state = {}, action) => {
   }
 }
 
+export const sortAgents = (state = { orderBy: 'status' }, action) => {
+  switch (action.type) {
+    case SORT_AGENTS:
+      return action.sortAgents
+    default:
+      return state
+  }
+}
+
 const reducers = combineReducers({
   agents,
+  sortAgents,
 })
 
 export default reducers

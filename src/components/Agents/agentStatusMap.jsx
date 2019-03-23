@@ -1,4 +1,4 @@
-const AgentStatusMap = {
+const agentStatusMap = {
   '0': {
     label: 'On Call',
     style: {
@@ -31,4 +31,4 @@ const AgentStatusMap = {
   },
 }
 
-export default AgentStatusMap
+export default agentStatusMap

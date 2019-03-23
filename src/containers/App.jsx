@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import { fetchAgents, elapsedTime } from '../actions'
+import { fetchAgents, elapsedTime, sortAgents } from '../actions'
 import Agents from '../components/Agents'
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 
@@ -25,6 +25,7 @@ class App extends Component {
             <div>
               <Agents
                 agents={agents}
+                sortAgents={sortAgents}
               />
             </div>
           </div>
@@ -44,7 +45,10 @@ const mapStateToProps = (state) => {
   return {
     agents,
   }
-
 }
 
-export default connect(mapStateToProps)(App)
+const mapDispatchToProps = (dispatch) => ({
+  sortAgents: orderBy => dispatch(sortAgents(orderBy)),
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(App)
