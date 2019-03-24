@@ -1,7 +1,7 @@
 const headerRows = [
   { id: 'status', label: 'Status' },
   { id: 'time', label: 'Time in State' },
-  { id: 'agent_name', label: 'Agent Name' },
+  { id: 'name', label: 'Agent Name' },
   { id: 'tier', label: 'Tier' },
   { id: 'status_name', label: 'Current call' },
   { id: 'next_plate', label: 'Next Challenge' },
