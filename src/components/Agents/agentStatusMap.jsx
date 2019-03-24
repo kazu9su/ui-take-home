@@ -2,25 +2,25 @@ const agentStatusMap = {
   '0': {
     label: 'On Call',
     style: {
-      backgroundColor: 'yellow'
+      backgroundColor: '#f7f06e'
     },
   },
   '1': {
     label: 'Waiting',
     style: {
-      backgroundColor: 'green'
+      backgroundColor: '#c7ddae'
     },
   },
   '2': {
     label: 'Disposition',
     style: {
-      backgroundColor: 'blue'
+      backgroundColor: '#aabade'
     },
   },
   '3': {
     label: 'Unavailable',
     style: {
-      backgroundColor: 'red'
+      backgroundColor: '#dd9dbf'
     },
   },
   '4': {

@@ -26,7 +26,6 @@ const icons = (action, i) => {
 }
 
 const desc = (a, b, orderBy) => {
-    console.log(a, b)
   if (b[orderBy] < a[orderBy]) {
     return -1;
   }
