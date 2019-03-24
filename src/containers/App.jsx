@@ -4,6 +4,7 @@ import { connect } from 'react-redux'
 import { fetchAgents, elapsedTime, sortAgents } from '../actions'
 import Agents from '../components/Agents'
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
+import { getSorting, stableSort } from '../common/sort'
 
 class App extends Component {
   static propTypes = {
@@ -39,16 +40,25 @@ class App extends Component {
 }
 
 const mapStateToProps = (state) => {
-  const {
+  let {
     items: agents,
   } = state.agents || {
-    items: {},
+    items: [],
+  }
+
+  const order = state.sortAgents.order
+  const orderBy = state.sortAgents.orderBy
+
+  if (agents === undefined) {
+    agents = []
+  } else {
+    agents = stableSort(agents, getSorting(order, orderBy))
   }
 
   return {
     agents: agents,
-    order: state.sortAgents.order,
-    orderBy: state.sortAgents.orderBy,
+    order: order,
+    orderBy: orderBy,
   }
 }
 
