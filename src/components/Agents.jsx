@@ -38,7 +38,7 @@ const Agents = ({ agents, order, orderBy, sortAgents }) => (
       )}
       </TableRow>
     </TableHead>
-    <TableBody displayRowCheckbox={false}>
+    <TableBody>
       { agents.map(agent =>
         <TableRow key={agent.id}>
           <TableCell style={agentStatusMap[agent.status].style}>

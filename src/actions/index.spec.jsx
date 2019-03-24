@@ -2,7 +2,6 @@ import assert from 'power-assert'
 import thunk from 'redux-thunk'
 import configMockStore from 'redux-mock-store'
 import sinon from 'sinon'
-import jsonfile from 'jsonfile'
 
 const middleware = [thunk]
 const mockStore = configMockStore(middleware)
@@ -59,13 +58,9 @@ describe('fetchAgents', () => {
 
         assert.strictEqual(dispatchedActions.length, 1)
 
-        const file = 'src/resources/agents.json'
-        jsonfile.readFile(file)
-          .then(obj => {
-            assert.deepStrictEqual(dispatchedActions[0], receiveAgents(obj))
-          })
-
-          done()
+        const json = require('resources/agents.json')
+        assert.deepStrictEqual(dispatchedActions[0], receiveAgents(json.agents))
+        done()
       })
   })
 })
